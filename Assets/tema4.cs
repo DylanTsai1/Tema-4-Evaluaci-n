@@ -11,8 +11,14 @@ public class tema4 : MonoBehaviour
     float costoTotalCombustible;
     float costoDeCombustible;
     float costoDeCombstibleTotal;
-    float combustibleDiaDeLluvia;
-    float combustibleDiaNormal; 
+    float KmDiaNormal;
+    float KmDiaDeLluvia;
+    float litrosnormal;
+    float litroslluvia;
+    float costolitro;
+    float litrospordianormal;
+    float litrospordialluvia;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +31,14 @@ public class tema4 : MonoBehaviour
         else  
         {
             dia = periodoDeDias - dialluvia;
-            periodoDeDias = dia + dialluvia;
-            combustibleDiaDeLluvia = 130;
-            combustibleDiaNormal = 90; ;
-            costoDeCombustible = cantidadDeUnidades * ((dia * combustibleDiaNormal) + (dialluvia * combustibleDiaDeLluvia));
+            KmDiaNormal = 90;
+            KmDiaDeLluvia = 120;
+            costolitro = 130;
+            litrospordianormal = KmDiaNormal/15;
+            litrospordialluvia = KmDiaDeLluvia/15; 
+            litrosnormal = (dia * litrospordianormal ) * costolitro;
+            litroslluvia = (dialluvia * litrospordialluvia) * costolitro; 
+            costoDeCombustible = cantidadDeUnidades * ((litrosnormal) + (litroslluvia));
 
             Debug.Log("Una flota de " + cantidadDeUnidades + " unidades trabajando durante " + periodoDeDias + " días implicará un costo de " + costoDeCombustible + " pesos en concepto de combustible ");
 
